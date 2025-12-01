@@ -1,0 +1,56 @@
+# Example Connection
+menuconfig:
+
+(top) → Example Configuration
+
+[*] connect using WiFi interface
+(myssid) WiFi SSID 
+(mypassword) WiFi Password
+[ ] Obtain IPv6 address
+(192.168.1.1) Router IP Address (only when connect using Ethernet)
+(24) Router netmask (only when connect using Ethernet)
+
+# ESP32-S3 Configuration
+menuconfig:
+
+(top) → Component config → ESP32S3-Specific
+
+[*] Support for external, SPI-connected RAM
+    Type of SPI RAM chip in use (ESP-PSRAM64H (8MB)) --->
+[*] Initialize SPI RAM during startup  
+[*] Run memory test on SPI RAM initialization
+[*] Enable workaround for bug in SPI RAM cache for Rev1 ESP32s
+SPI RAM config (Make RAM allocatable using heap_caps_malloc(..., MALLOC_CAP_SPIRAM)) --->
+
+# MQTT Configuration  
+menuconfig:
+
+(top) → Component config → ESP-MQTT Configurations
+
+(4096) Default MQTT over TCP buffer size
+(4096) Default MQTT over SSL buffer size  
+(1024) Default MQTT over Websocket buffer size
+(1024) Default MQTT over Websocket Secure buffer size
+[*] Enable MQTT protocol 311
+[*] Enable MQTT over SSL
+[*] Enable MQTT over Websocket
+[*] Enable MQTT over Websocket Secure
+
+# Certificate Bundle
+menuconfig:
+
+(top) → Component config → mbedTLS
+
+[*] Enable mbedTLS certificate bundle  
+[*] Default certificate bundle
+Certificate bundle format (PEM Format) --->
+
+# Task Watchdog
+menuconfig:
+
+(top) → Component config → ESP System Settings  
+
+[*] Initialize Task Watchdog Timer on startup
+(300) Task watchdog timeout period (seconds)
+[*] Watch CPU0 Idle Task
+[*] Watch CPU1 Idle Task
